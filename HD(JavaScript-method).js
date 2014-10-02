@@ -11,7 +11,6 @@
           /* @constructor */
                init: function(player, options){
                  videojs.Button.call(this, player, options);
-                 this.on('click', this.onClick);
                }
              });
             
