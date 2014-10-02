@@ -1,0 +1,14 @@
+.vjs-default-skin .vjs-hd-button {
+  float: right;
+  cursor: pointer;
+}
+
+.vjs-default-skin .vjs-hd-button:before {
+  content: 'HD';
+}
+
+.vjs-default-skin .vjs-hd-button.vjs-hd-selected:before {
+  color: #36D8DE;
+  font-weight: bold;
+  text-shadow: 0 0 1em #fff;
+}
