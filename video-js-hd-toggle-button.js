@@ -20,7 +20,11 @@
   }
 
   vjs.HdToggleButton.prototype.onClick = function() {
+    var videoWasPlaying = !player.paused();
+    var previousTime = player.currentTime();
+
     hdSelected = !hdSelected;
+    player.pause();
 
     if (hdSelected) {
       player.src([{type: "video/mp4", src: hdSrc }]);
@@ -30,7 +34,16 @@
       this.removeClass('vjs-hd-selected');
     }
 
-    player.play();
+    player.ready(function(){
+      player.load();
+
+      player.one('loadedmetadata', function() {
+        player.currentTime(previousTime);
+        if (videoWasPlaying) {
+          player.play();
+        }
+      });
+    });
   };
 
   vjs.plugin('HdToggleButton', function(options) {
